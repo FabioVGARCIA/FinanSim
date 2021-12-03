@@ -1,0 +1,44 @@
+.full-width {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+}
+
+.reprovado {
+    margin: auto;
+    width: 97%;
+}
+
+.botoes {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.proposta {
+    font-size: 2.5em;
+    font-weight: 500;
+}
+
+.status {
+    font-size: 1.5em;
+    color: darkred;
+    font-weight: 500;
+}
+
+.width60 {
+    width: 60%;
+}
+
+.lista {
+    padding: 0%;
+    text-align: center;
+    list-style: none; 
+}
+
+p {
+    font-weight: 500;
+}

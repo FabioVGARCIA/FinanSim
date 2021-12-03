@@ -1,0 +1,38 @@
+.full-width {
+  width: 100%;
+}
+
+.umTerco {
+  width: 30%;
+  padding: 10px;
+}
+
+.imovel {
+  margin: auto;
+  width: 97%;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.botoes {
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+}

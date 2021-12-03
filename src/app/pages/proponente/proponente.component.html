@@ -1,0 +1,109 @@
+<form [formGroup]="proponenteForm" (ngSubmit)="onSubmit()">
+  <mat-card class="proponente">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Dados do proponente</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content  class="full-width">
+
+      <div>
+        <!-- NOME COMPLETO -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Nome completo</mat-label>
+          <input #nomeCompletoInput matInput minlength="3" placeholder="Nome completo" formControlName="nomeCompleto">
+          <mat-hint>Preencha com seu nome completo</mat-hint>
+            <mat-error *ngIf="proponenteForm.controls['nomeCompleto'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="proponenteForm.controls['nomeCompleto'].hasError('minlength')">
+            Deve conter ao menos 3 dígitos
+          </mat-error>
+          <mat-error *ngIf="proponenteForm.controls['nomeCompleto'].hasError('pattern')">
+            Não pode conter números ou caracteres especiais
+          </mat-error>
+        </mat-form-field>
+        <!-- PROFISSÃO -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Profissão</mat-label>
+          <input matInput placeholder="Profissão" formControlName="profissao">
+          <mat-hint>Preencha com a sua Profissão</mat-hint>
+          <mat-error *ngIf="proponenteForm.controls['profissao'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- CPF -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="CPF" formControlName="cpf" mask="000.000.000-00">
+          <mat-hint>Preencha com seu CPF</mat-hint>
+          <mat-error *ngIf="proponenteForm.controls['cpf'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="proponenteForm.controls['cpf'].hasError('minlength')">
+            Deve conter 11 números
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <!-- E-MAIL -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>E-mail</mat-label>
+          <input matInput placeholder="e-mail@exemplo.com" formControlName="email">
+          <mat-hint>Preencha com um e-mail válido</mat-hint>
+          <mat-error *ngIf="proponenteForm.controls['email'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>                  
+          <mat-error *ngIf="proponenteForm.controls['email'].hasError('email')">
+            <strong>Email inválido</strong>
+          </mat-error>        
+        </mat-form-field>
+        <!-- DATA DE NASCIMENTO -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Data de nascimento</mat-label>
+          <input matInput type="date" formControlName="nascimento">     <!-- VALIDAR COMPO CORRETAMENTE -->
+          <mat-hint>Preencha com sua data de nascimento</mat-hint>
+          <mat-error *ngIf="proponenteForm.controls['nascimento'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="proponenteForm.controls['nascimento'].hasError('menorDeIdade')">
+            Você precisa ter mais de 18 anos
+          </mat-error>
+        </mat-form-field>
+        <!-- CEP -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>CEP</mat-label>
+          <input matInput placeholder="CEP" formControlName="cep" mask="00000-000">
+          <mat-hint>Preencha com seu CEP</mat-hint>
+          <mat-error *ngIf="proponenteForm.controls['cep'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="proponenteForm.controls['cep'].hasError('minlength')">
+            Deve conter 8 números
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <!-- CELULAR -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Celular</mat-label>
+          <input matInput placeholder="Celular" formControlName="celular" mask="(00) 00000-0000">
+          <mat-hint>Preencha com seu Celular</mat-hint>
+          <mat-error *ngIf="proponenteForm.controls['celular'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="proponenteForm.controls['celular'].hasError('minlength')">
+            Deve conter 11 números
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <hr aria-hidden="true">
+    <mat-card-actions>
+      <div class="botoes">
+        <button mat-raised-button color="basic" type="submit" [routerLink]="['/inicio']">CANCELAR</button>
+        <button mat-raised-button color="primary" [disabled]="!proponenteForm.valid" type="submit">CONTINUAR</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

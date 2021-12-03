@@ -1,0 +1,33 @@
+<mat-card class="aprovado">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Aprovado</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="full-width">
+            <div class="full-width">
+                <p class="proposta">Proposta Nº 00001</p><br>
+                <img aria-hidden="true" src="../../../assets/ok.png" alt=""><br>
+                <p class="status">STATUS: APROVADO</p><br>    
+            </div>
+            <hr aria-hidden="true" class="width60">
+            <div class="full-width">
+                <ul class="lista">
+                    <li><p>• Taxa de 8% ao ano para correntistas</p></li>
+                    <li><p>• Taxa de 10% ao ano para não correntistas</p></li>
+                    <li><p>• Parcela inicial {{ parcela | currency:'BRL' }}</p></li>
+                    <li><p>• Valor total aprovado: {{ valorTotal | currency:'BRL'}}</p></li>
+                    <li><p>• Seguro Só Vamu Security</p></li>
+                    <li><p>• Desconto na promeira e última parcela</p></li>
+                </ul>
+            </div>            
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+    <div class="botoes">
+        <button mat-raised-button color="primary" [routerLink]="['/inicio']">IR PARA A TELA INICIAL</button>
+    </div>
+    </mat-card-actions>
+</mat-card>
+

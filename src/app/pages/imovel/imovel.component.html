@@ -1,0 +1,80 @@
+<form [formGroup]="imovelForm" (ngSubmit)="onSubmit()">
+  <mat-card class="imovel">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Dados do imovel</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content  class="full-width">
+
+      <div>
+        <!-- TIPO DO IMÓVEL -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Tipo do imóvel</mat-label>
+          <select #tipoImovelInput matNativeControl required formControlName="tipoImovel">
+            <option label="Selecione o tipo do Imóvel" disabled></option>
+            <option value="residencial">Residencial</option>
+            <option value="comercial">Comercial</option>
+          </select>
+          <mat-error *ngIf="imovelForm.controls['tipoImovel'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-hint>Selecione o tipo de imóvel</mat-hint>
+        </mat-form-field>
+        <!-- RENDA MENSAL -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Renda mensal</mat-label>
+          <input matInput placeholder="Renda mensal" formControlName="rendaMensal" prefix="R$ " mask="separator.2" thousandSeparator=".">
+          <mat-hint>Preencha com a sua renda mensal</mat-hint>
+          <mat-error *ngIf="imovelForm.controls['rendaMensal'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- VALOR DO IMÓVEL -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Valor do imóvel</mat-label>
+          <input matInput placeholder="Valor do imóvel" formControlName="valorImovel"prefix="R$ " mask="separator.2" thousandSeparator=".">
+          <mat-hint>Preencha com o valor do imóvel desejado</mat-hint>
+          <mat-error *ngIf="imovelForm.controls['valorImovel'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <!-- VALOR DA ENTRADA -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Valor da entrada</mat-label>
+          <input matInput placeholder="Valor do entrada" formControlName="valorEntrada" prefix="R$ " mask="separator.2" thousandSeparator=".">
+          <mat-hint>Preencha com no mínimo 20% do valor do imóvel</mat-hint>
+          <mat-error *ngIf="imovelForm.controls['valorEntrada'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+            <div *ngIf="imovelForm.errors?.['valoresIguais'] && (imovelForm.touched || imovelForm.dirty || 0)">
+              <mat-error>A entrada precisa ser maior que 20% do valor do imóvel</mat-error>
+            </div>
+        </mat-form-field>
+        <!-- QUANTAS PARCELAS -->
+        <mat-form-field appearance="outline" class="umTerco">
+          <mat-label>Em quantas parcelas deseja parcelar</mat-label>
+          <input matInput placeholder="Em quantas parcelas deseja parcelar" type="number" formControlName="parcelas">
+          <mat-hint>Preencha com aquantidade de parcelas</mat-hint>
+          <mat-error *ngIf="imovelForm.controls['parcelas'].hasError('required')">
+            Esse campo é <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="imovelForm.controls['parcelas'].hasError('max')">
+            Preencha com no máximo <strong>360 parcelas</strong>
+          </mat-error>
+        </mat-form-field>
+      
+      </div>
+    </mat-card-content>
+    <hr aria-hidden="true">
+    <mat-card-actions>
+      <div class="botoes">
+        <button mat-raised-button color="basic" type="submit" (click)="voltar()">VOLTAR</button>
+        <button mat-raised-button color="primary" [disabled]="!imovelForm.valid" type="submit">SIMULAR</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
