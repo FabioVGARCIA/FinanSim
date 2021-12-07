@@ -32,11 +32,11 @@ export class ImovelComponent {
     this.imovelForm = this.fb.group({
       tipoImovel: new FormControl (null, [Validators.required]),
       rendaMensal: new FormControl (null, [Validators.required]),
-      valorImovel: new FormControl (0, [Validators.required]),
-      valorEntrada: new FormControl(null, entradaValidator),
+      valorImovel: new FormControl (null, [Validators.required]),
+      valorEntrada: new FormControl(null, [Validators.required]),
       parcelas: new FormControl (null, [Validators.required, Validators.max(360)])
     },
-     { validators: entradaValidator }
+    //  { validators: entradaValidator }
      );
   }
 
@@ -50,9 +50,9 @@ export class ImovelComponent {
   onSubmit() {
 
     // console.log(this.transfereService.imovel);
-    let valorEntradaNum = this.imovelForm.controls['valorEntrada'].value.slice(2).split('.').join("").replace(/,/g,".");
-    let valorImovelNum = this.imovelForm.controls['valorImovel'].value.slice(2).split('.').join("").replace(/,/g,".");
-    let rendaMensalMin = (this.imovelForm.controls['rendaMensal'].value.slice(2).split('.').join("").replace(/,/g,"."))*0.3;
+    let valorEntradaNum = this.imovelForm.controls['valorEntrada'].value;
+    let valorImovelNum = this.imovelForm.controls['valorImovel'].value;
+    let rendaMensalMin = (this.imovelForm.controls['rendaMensal'].value)*0.3;
     let totalAprovado = valorImovelNum - valorEntradaNum;
     let taxaAoAno: number = 0.08;
     let parcelasNum: number = this.imovelForm.controls['parcelas'].value;
@@ -62,7 +62,9 @@ export class ImovelComponent {
     this.transfereService.pegarParcela(this.passarParcela);
     this.transfereService.pegarValorTotal(this.passarValorTotal)
 
-    if (rendaMensalMin > parcelaInicial)
+    if ( valorEntradaNum < valorImovelNum*0.2 )
+      alert("O valor da entrada precisa ser maior que 20% do valor do imóvel")
+    else if (rendaMensalMin > parcelaInicial)
       this.router.navigateByUrl('/aprovado')
       else this.router.navigateByUrl('/reprovado')
     
@@ -84,31 +86,3 @@ export class ImovelComponent {
   }
 
 }
-
-
-
-
-
-
-
-// import { Component } from '@angular/core';
-// import { FormBuilder, Validators } from '@angular/forms';
-
-// @Component({
-//   selector: 'app-imovel',
-//   templateUrl: './imovel.component.html',
-//   styleUrls: ['./imovel.component.css']
-// })
-// export class ImovelComponent {
-//   imovelForm = this.fb.group({
-//     tipoImovel: [null, Validators.required], // VALIDAR CAMPO CORRETAMENTE
-//     rendaMensal: [null, Validators.required], // VALIDAR CAMPO CORRETAMENTE
-//     valorImovel: [null, Validators.required], // VALIDAR CAMPO CORRETAMENTE
-//     valorEntrada: [null, Validators.required], // VALIDAR CAMPO CORRETAMENTE
-//     parcelas: [null, Validators.required], // VALIDAR CAMPO CORRETAMENTE
-//   });
-
-
-//   constructor(private fb: FormBuilder) {}
-
-// }

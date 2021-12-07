@@ -63,7 +63,7 @@ import { TransfereService } from './shared/transfere.service';
     MatNativeDateModule,
     AppRoutingModule,
     NgxMaskModule.forRoot({
-      dropSpecialCharacters: false
+      dropSpecialCharacters: true
     }),  
   ],
   providers: [

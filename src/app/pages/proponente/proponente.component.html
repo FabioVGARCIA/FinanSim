@@ -61,13 +61,13 @@
         <!-- DATA DE NASCIMENTO -->
         <mat-form-field appearance="outline" class="umTerco">
           <mat-label>Data de nascimento</mat-label>
-          <input matInput type="date" formControlName="nascimento">     <!-- VALIDAR COMPO CORRETAMENTE -->
+          <input matInput type="date" formControlName="nascimento">
           <mat-hint>Preencha com sua data de nascimento</mat-hint>
           <mat-error *ngIf="proponenteForm.controls['nascimento'].hasError('required')">
             Esse campo é <strong>obrigatório</strong>
           </mat-error>
           <mat-error *ngIf="proponenteForm.controls['nascimento'].hasError('menorDeIdade')">
-            Você precisa ter mais de 18 anos
+            Você precisa ter uma data válida acima de 18 anos
           </mat-error>
         </mat-form-field>
         <!-- CEP -->

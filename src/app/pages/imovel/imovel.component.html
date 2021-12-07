@@ -26,14 +26,14 @@
           <mat-label>Renda mensal</mat-label>
           <input matInput placeholder="Renda mensal" formControlName="rendaMensal" prefix="R$ " mask="separator.2" thousandSeparator=".">
           <mat-hint>Preencha com a sua renda mensal</mat-hint>
-          <mat-error *ngIf="imovelForm.controls['rendaMensal'].hasError('required')">
+          <mat-error *ngIf="imovelForm.controls['rendaMensal'].hasError('required') && imovelForm.controls['rendaMensal'].dirty">
             Esse campo é <strong>obrigatório</strong>
           </mat-error>
         </mat-form-field>
         <!-- VALOR DO IMÓVEL -->
         <mat-form-field appearance="outline" class="umTerco">
           <mat-label>Valor do imóvel</mat-label>
-          <input matInput placeholder="Valor do imóvel" formControlName="valorImovel"prefix="R$ " mask="separator.2" thousandSeparator=".">
+          <input matInput placeholder="Valor do imóvel" formControlName="valorImovel" prefix="R$ " mask="separator.2" thousandSeparator=".">
           <mat-hint>Preencha com o valor do imóvel desejado</mat-hint>
           <mat-error *ngIf="imovelForm.controls['valorImovel'].hasError('required')">
             Esse campo é <strong>obrigatório</strong>
@@ -49,9 +49,6 @@
           <mat-error *ngIf="imovelForm.controls['valorEntrada'].hasError('required')">
             Esse campo é <strong>obrigatório</strong>
           </mat-error>
-            <div *ngIf="imovelForm.errors?.['valoresIguais'] && (imovelForm.touched || imovelForm.dirty || 0)">
-              <mat-error>A entrada precisa ser maior que 20% do valor do imóvel</mat-error>
-            </div>
         </mat-form-field>
         <!-- QUANTAS PARCELAS -->
         <mat-form-field appearance="outline" class="umTerco">

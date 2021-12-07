@@ -30,11 +30,11 @@ export class ProponenteComponent {
     this.proponenteForm = this.fb.group({
       nomeCompleto: new FormControl (this.pessoa==={} ? null : this.pessoa.nomeCompleto, [Validators.required, Validators.minLength(3), Validators.pattern('^[A-Z a-zÀ-ú]*$')]),
       profissao: new FormControl (this.pessoa==={} ? null : this.pessoa.profissao,  [Validators.required]),
-      cpf: new FormControl (this.pessoa==={} ? null : this.pessoa.cpf, [Validators.required, Validators.minLength(14)]),
+      cpf: new FormControl (this.pessoa==={} ? null : this.pessoa.cpf, [Validators.required, Validators.minLength(11)]),
       email: new FormControl (this.pessoa==={} ? null : this.pessoa.email, [Validators.required, Validators.email]),
       nascimento: new FormControl (this.pessoa==={} ? null : this.pessoa.nascimento, [Validators.required, Validadores.MaiorQue18Anos]), 
-      cep: new FormControl (this.pessoa==={} ? null : this.pessoa.cep, [Validators.required, Validators.minLength(9)]),
-      celular: new FormControl (this.pessoa==={} ? null : this.pessoa.celular, [Validators.required, Validators.minLength(15)]),
+      cep: new FormControl (this.pessoa==={} ? null : this.pessoa.cep, [Validators.required, Validators.minLength(8)]),
+      celular: new FormControl (this.pessoa==={} ? null : this.pessoa.celular, [Validators.required, Validators.minLength(11)]),
     });    
   
   }
@@ -43,7 +43,7 @@ export class ProponenteComponent {
   onSubmit() {
     this.transfereService.pegarProponente(this.proponenteForm.value)
     this.router.navigateByUrl('/imovel')
-    console.log(this.transfereService.proponente)
+    // console.log(this.proponenteForm)
   }
 
 

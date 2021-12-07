@@ -2,3 +2,22 @@
     padding: 0px 30px;
 }
 
+@media (max-width: 600px) {
+    
+    h1 {
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .loguinho {
+        padding: 0px;
+    }
+
+    .toolbar {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+}
+

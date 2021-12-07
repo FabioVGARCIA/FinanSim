@@ -42,3 +42,15 @@
 p {
     font-weight: 500;
 }
+
+@media (max-width: 600px) {
+
+    .proposta {
+        font-size: 1.5em;
+    }
+    
+    .status {
+        font-size: 1.3em;
+    }
+
+}

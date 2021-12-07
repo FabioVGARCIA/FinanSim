@@ -36,3 +36,29 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 620px) {
+
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .full-width {
+    display: block;
+    width: 100%;
+  }
+
+  .umTerco {
+    display: block;
+    width: 80%;
+    padding: 10px;
+  }
+  
+  .imovel {
+    display: block;
+    margin: auto;
+    width: 97%;
+  }
+
+}
