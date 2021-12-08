@@ -2,7 +2,8 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { entradaValidator } from 'src/app/shared/entradavalid';
+import { MatSnackBar } from '@angular/material/snack-bar';
+// import { entradaValidator } from 'src/app/shared/entradavalid';
 import { TransfereService } from 'src/app/shared/transfere.service';
 
 
@@ -20,6 +21,7 @@ export class ImovelComponent {
   passarValorTotal: string = "";
   
   constructor(
+    private _snackBar: MatSnackBar,
     private fb: FormBuilder,
     private transfereService : TransfereService,
     private router : Router
@@ -63,8 +65,20 @@ export class ImovelComponent {
     this.transfereService.pegarValorTotal(this.passarValorTotal)
 
     if ( valorEntradaNum < valorImovelNum*0.2 )
-      alert("O valor da entrada precisa ser maior que 20% do valor do imóvel")
-    else if (rendaMensalMin > parcelaInicial)
+    this._snackBar.open( "O valor da entrada precisa ser maior que 20% do valor do imóvel", "OK",
+      {
+        duration: 5000,
+        horizontalPosition: "center",
+        verticalPosition: "top",
+      })
+      else if ( totalAprovado < 0 )
+      this._snackBar.open("O valor da entrada deve ser menor que o valor do imóvel", "OK", 
+      {
+          duration: 5000,
+          horizontalPosition: "center",
+          verticalPosition: "top",
+      })
+      else if (rendaMensalMin > parcelaInicial)
       this.router.navigateByUrl('/aprovado')
       else this.router.navigateByUrl('/reprovado')
     

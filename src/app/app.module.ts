@@ -22,6 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -62,6 +63,7 @@ import { TransfereService } from './shared/transfere.service';
     MatDatepickerModule,
     MatNativeDateModule,
     AppRoutingModule,
+    MatSnackBarModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: true
     }),  
@@ -70,7 +72,8 @@ import { TransfereService } from './shared/transfere.service';
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     MatDatepickerModule,
     MatNativeDateModule,
-    TransfereService,    
+    TransfereService,
+    MatSnackBarModule   
   ],
   bootstrap: [AppComponent]
 })
